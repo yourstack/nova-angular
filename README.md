@@ -1,5 +1,11 @@
 # NovaAngular
+# 项目介绍
+- Nova Angular项目，将Angular的新特性逐个展示出来，方便大家学习。
 
+
+
+
+# 参考资料
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
 ## Development server
