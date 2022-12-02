@@ -55,6 +55,9 @@ git commit -m "feat: init nova angular & bvideo module" # 添加本次修改内�
 git remote add origin https://github.com/yourstack/nova-angular.git
 git push --set-upstream origin master
 git push
+
+# 设置代理（仅Github需要）
+ git config --global https.proxy https://127.0.0.1:1180
 ```
 
 ## 更多帮助Further help
