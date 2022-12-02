@@ -29,13 +29,4 @@ describe('HomeComponent', () => {
     // 编译渲染后模板页面，类选择器匹配.vlist列表区域至少有2个以上视频子节点
     expect(compiled.querySelector('.vlist')?.childNodes.length).toBeGreaterThanOrEqual(2);
   });
-
-  it("shold render .vlist",()=>{
-    const fixture = TestBed.createComponent(HomeComponent)
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector(".vlist")?.childNodes.length).toBeGreaterThanOrEqual(2)
-    expect(compiled.querySelector(".vlist")?.childNodes.length).toBeTruthy();
-  })
-  
 });
