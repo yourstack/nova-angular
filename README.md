@@ -4,6 +4,18 @@
 
 
 
+# 版本控制
+``` sh
+# 创建本地GIT
+git init # 本地初始化GIT版本控制
+git add . # 添加需要被版本控制的文件
+git commit -m "feat: init nova angular & bvideo module" # 添加本次修改内容的说明
+
+# 推送远程GIT
+git remote add origin https://github.com/yourstack/nova-angular.git
+git push --set-upstream origin master
+git push
+```
 
 # 参考资料
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
