@@ -10,7 +10,6 @@
         </a>
     </div>
 
-
     <div class="nav">
         <div class="nav-close">
             <ng-container *ngFor="let nav of NavData">
@@ -21,6 +20,7 @@
     </div>
 
 <div class="vlist">
+    <!-- HTML模板渲染 -->
     <div *ngFor="let video of VideoData" class="video-item">
         <div class="video-head">
             <img src="{{video.imge}}"
@@ -32,9 +32,12 @@
                         style="width: 20px;">{{video.countComment}}</div>
             </div>
         </div>
-
         <span class="text">{{video.title}}</span>
     </div>
+
+    <!-- VideoCard标签渲染 -->
+    <bvideo-video-card *ngFor="let video of VideoData" [video]="video"></bvideo-video-card>
+
 </div>
 
  

@@ -9,6 +9,9 @@
     - [第一个Angular项目的创建及结构说明](docs/startup/1.initproject.md)
     - [第一个模块/组件的创建与路由导航](docs/startup/2.newmodule%26component.md)
     - [认识Angular中常见的Typescript语法](docs/startup/3.tslang.md)
+    - [实战:写一个自己的子模块](docs/startup/task1.md)
+- 八大构造 basic
+    - [Component组件的两种用法:页面组件/标签组件](docs/basic/1.component.md)
 - 前端测试：testing
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
