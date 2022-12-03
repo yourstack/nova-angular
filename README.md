@@ -8,6 +8,7 @@
 - 新人起步：startup
     - [第一个Angular项目的创建及结构说明](docs/startup/1.initproject.md)
     - [第一个模块/组件的创建与路由导航](docs/startup/2.newmodule%26component.md)
+    - [认识Angular中常见的Typescript语法](docs/startup/3.tslang.md)
 - 前端测试：testing
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
