@@ -1,0 +1,10 @@
+<h1>{{gameObject.name}}</h1>
+<p>预约榜 {{gameObject.top}} 预约 {{gameObject.order}}</p>
+<p>预约 {{toWan(gameObject.order)}} {{toK(gameObject.order)}}</p>
+<p>预约 {{gameObject.order | toK}}</p>
+<p>更新时间1：{{gameObject.updateAt | date:'yyyy/MM/dd'}}</p>
+<p>更新时间2：{{toDateText(gameObject.updateAt)}}</p>
+<h2>游戏介绍</h2>
+<p>游戏标签：<span *ngFor="let tag of gameObject.tags">{{tag}}</span></p>
+
+<nova-edit-tag [tagList]="gameObject.tags" [editable]="true"></nova-edit-tag>

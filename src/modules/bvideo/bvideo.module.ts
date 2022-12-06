@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { VideoComponent } from './video/video.component';
 import { VideoCardComponent } from './video-card/video-card.component';
 
-
 @NgModule({
   declarations: [
     HomeComponent,
