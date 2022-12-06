@@ -5,12 +5,15 @@ import { BvideoRoutingModule } from './bvideo-routing.module';
 import { HomeComponent } from './home/home.component';
 import { VideoComponent } from './video/video.component';
 import { VideoCardComponent } from './video-card/video-card.component';
+import { ToKPipe } from '../gametap/pipes/to-k.pipe';
+
 
 @NgModule({
   declarations: [
     HomeComponent,
     VideoComponent,
-    VideoCardComponent
+    VideoCardComponent,
+    ToKPipe
   ],
   imports: [
     CommonModule,
