@@ -43,3 +43,6 @@ Thumbs.db
 
 # case js output
 docs/case-tslang/**/*.js
+
+# ChildProject
+.projects/
