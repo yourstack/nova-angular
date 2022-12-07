@@ -1,6 +1,5 @@
 # Pipe 管道页面数据的快速处理工具
 
-
 # Angular系统内置管道
 - 官方管道：http://angular.cn/guide/pipes-overview
     - DatePipe http://angular.cn/api/common/DatePipe
