@@ -46,3 +46,6 @@ docs/case-tslang/**/*.js
 
 # ChildProject
 .projects/
+
+# Backend
+node_modules/
