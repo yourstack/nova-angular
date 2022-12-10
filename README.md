@@ -16,7 +16,8 @@
     - [Service:服务实现多组件数据共享](docs/basic/service.md)
     - [Directive:属性选择器的精准控制](docs/basic/directive.md)
 - 前端CICD
-    - [Library企业组件库的设计](docs/cicd/library.md)
+    - [Library:企业组件库的设计](docs/cicd/library.md)
+    - [Scripts:编写跨平台自动化脚本](scripts/README.md)
 - 前端测试：testing
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
