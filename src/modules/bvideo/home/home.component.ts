@@ -20,7 +20,6 @@ export class HomeComponent {
 
   updateAt:Date = new Date();
   constructor(
-    private router:Router,
     public videoServ:VideoService
     ){
     this.getNavData();

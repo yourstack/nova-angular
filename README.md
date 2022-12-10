@@ -11,7 +11,10 @@
     - [认识Angular中常见的Typescript语法](docs/startup/3.tslang.md)
     - [实战:写一个自己的子模块](docs/startup/task1.md)
 - 八大构造 basic
-    - [Component组件的两种用法:页面组件/标签组件](docs/basic/1.component.md)
+    - [Component组件的两种用法:页面组件/标签组件](docs/basic/component.md)
+    - [DataBinding双向数据绑定:输入属性/输出事件](docs/basic/databinding.md)
+    - [Service:服务实现多组件数据共享](docs/basic/service.md)
+    - [Directive:属性选择器的精准控制](docs/basic/directive.md)
 - 前端CICD
     - [Library企业组件库的设计](docs/cicd/library.md)
 - 前端测试：testing

@@ -1,5 +1,7 @@
 # Library：企业前端库
 
+- 示例代码：[projects/lib-nova/src/public-api.ts](../../projects/lib-nova/src/public-api.ts)
+
 # 创建一个前端库
 
 ``` sh
