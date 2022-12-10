@@ -18,6 +18,7 @@
 - 前端CICD
     - [Library:企业组件库的设计](docs/cicd/library.md)
     - [Scripts:编写跨平台自动化脚本](scripts/README.md)
+    - [MultiProjects:多模块及多库依赖实践](docs/cicd/multi-projects.md)
 - 前端测试：testing
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
