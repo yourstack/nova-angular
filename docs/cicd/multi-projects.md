@@ -6,6 +6,20 @@
 - 打包体积变化，主要是由于根模块引用了BrowserAnimationsModule，以及scss样式
     - npm安装ionic/material/primeng/antdesign，不引入情况下本身不增加体积
     - 可以放心安装多组件库依赖，并在子项目中独立引入
+- 注意：HttpClientModule几乎所有项目都是必需的，但是也会增加main.js体积
+    - 经测试，会增加16k，可以放心使用
+
+- app.module.ts新增HttpClientModule后效果
+
+``` sh
+Initial Chunk Files           | Names                              |  Raw Size | Estimated Transfer Size
+main.e61192629c83a5cc.js      | main                               | 252.91 kB |                69.50 kB
+polyfills.925e0c339c801df5.js | polyfills                          |  33.08 kB |                10.65 kB
+runtime.e90f67e49d5b8761.js   | runtime                            |   2.72 kB |                 1.30 kB
+styles.ef46db3751d8e999.css   | styles                             |   0 bytes |                       -
+
+                              | Initial Total                      | 288.72 kB |                81.46 kB
+```
 
 ## 最佳实践:PWA项目独立子项目管理
 - 建议PWA项目，需要新增app-shell或者独立创建子项目，严格控制app.module.ts和angular.json的依赖

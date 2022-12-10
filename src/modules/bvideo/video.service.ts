@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
   VideoData:any[] = []
   showVideoData:any[] = []
-  constructor(private router:Router) { }
+  constructor(private router:Router,private http:HttpClient) { 
+    this.getVideoDataByXHR();
+    this.getVideoDataByFetch();
+    this.getVideoDataByHttp();
+  }
 
   goVideoDetail(id:number){
     this.router.navigate(["/bvideo/video"],{queryParams:{id:id}})
@@ -28,6 +34,58 @@ export class VideoService {
     return this.VideoData.find(item=>item.id==id)
   }
 
+  /**
+   * Angular Http
+   */
+  async getVideoDataByHttp(){
+    console.log("getVideoDataByHttp")
+    let data = await this.http.get("http://metapunk.cn/test/video.json").toPromise();
+    console.log(data);
+  }
+  /**
+   * EMCAScript 6+
+   * fetch()
+   */
+  async getVideoDataByFetch(){
+    console.log("getVideoDataByFetch")
+      let response = await fetch("http://metapunk.cn/test/video.json", {
+        "credentials": "omit",
+        "headers": {
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+    if(response.status==200){
+      return await response.text()
+    }else{
+      return null
+    }
+  }
+
+  /*
+    JavaScript
+    AJAX 通过XMLHttpRequest发送http请求
+  */
+  getVideoDataByXHR(){
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+    console.log("getVideoDataByXHR")
+    return new Promise((resolve,reject)=>{
+
+      let req = new XMLHttpRequest();
+      let url = "http://metapunk.cn/test/video.json"
+
+      req.withCredentials = false;
+      req.onreadystatechange = (e) => {
+        console.log(req.status)
+        if(req.status == 200){
+          console.log(req.responseText)
+          resolve(req.responseText)
+        }
+      };
+      req.open("GET", url,true);
+      req.send();
+    })
+  }
   getVideoData(){
     this.VideoData = [
       {
