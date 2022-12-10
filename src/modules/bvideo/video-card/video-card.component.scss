@@ -1,55 +1,57 @@
-.video-item {
-    float: left;
-    width: calc(50% - 10px);
-    height: 160px;
-    padding: 2px 3px 3px 5px;
-    /*上 右 下 左*/
-}
 
-.video-item>.video-head {
-    width: 100%;
-}
+        .video-item {
+            float: left;
+            width: calc(50% - 10px);
+            height: 160px;
+            padding: 2px 3px 3px 5px;
+            /*上 右 下 左*/
+        }
 
-.video-item img {
-    width: 100%;
-}
+        .video-item>.video-head {
+            width: 100%;
+        }
 
-.video-item .video-count {
-    position: relative;
-    height: 25px;
-    margin-top: -25px;
-    color: #ffffff;
-    background-image: linear-gradient(to bottom, hsl(0deg 0% 24% / 0%), rgb(0 0 0));
-}
+        .video-item img {
+            width: 100%;
+        }
 
-.count-left {
-    float: left;
-    margin-left: 5px;
+        .video-item .video-count {
+            position: relative;
+            height: 25px;
+            margin-top: -25px;
+            color: #ffffff;
+            background-image: linear-gradient(to bottom, hsl(0deg 0% 24% / 0%), rgb(0 0 0));
 
-}
+        }
 
-.count-right {
-    float: right;
-    margin-right: 5px;
-    color: #ffffff;
-}
+        .count-left {
+            float: left;
+            margin-left: 5px;
 
-.video-item>span {
-    font: -webkit-mini-control;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    color: black;
-}
+        }
 
-.text {
-    position: relative;
-    bottom: -11px;
-}
+        .count-right {
+            float: right;
+            margin-right: 5px;
+            color: #ffffff;
+        }
 
-.nub {
-    position: relative;
-    right: -10px;
-    top: -3px;
-}
+        .video-item>span {
+            font: -webkit-mini-control;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            color: black;
+        }
+
+        .text {
+            position: relative;
+            bottom: -11px;
+        }
+
+        .nub {
+            position: relative;
+            right: -10px;
+            top: -3px;
+        }

@@ -5,7 +5,7 @@ import { Component,  Input , OnInit } from '@angular/core';
   templateUrl: './rating-star.component.html',
   styleUrls: ['./rating-star.component.scss']
 })
-export class RatingStarComponent implements OnInit {
+export class EditRatingStarComponent implements OnInit {
   @Input("score")
   score:number = 0;
   @Input("total")

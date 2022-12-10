@@ -1,19 +1,5 @@
-// header
-div.header {
-    width: 100%;
-    height: 50px;
-    background-color: white;
-}
 
-.header .tx>img {
-
-    margin-right: 10px;
-    margin-left: 15px;
-
-}
-
-// nav
-.nav {
+.nav- {
     position: relative;
     width: 100%;
     overflow: scroll;
@@ -40,29 +26,6 @@ div.nav-close {
     border-bottom: solid 3px;
     border-color: #FB7299;
 }
-
-.starList {
-    position: relative;
-
-    .stars {
-        display: flex;
-        align-items: center;
-        text-align: center;
-
-        .img {
-            width: 25px;
-            height: 25px;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-}
-
-
-// vlist
 
 div.vilist {
     padding: 0;
@@ -127,16 +90,11 @@ div.vilist {
     top: -3px;
 }
 
-
-// Fixed openapp
-
 a:link {
     text-decoration: none;
 }
 
-
-
-.logo img {
+.openapp .nav .logo>img {
     width: 10.66667vmin;
     height: 11.73333vmin;
     background-repeat: no-repeat;
@@ -152,7 +110,7 @@ a:link {
 .xds {
     width: 390px;
     height: 30px;
-    background-color: #fb7299;
+    background: #fb7299;
     color: white;
     border-radius: 25px;
     padding: 0px 0px 7px 0px;

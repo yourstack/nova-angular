@@ -12,6 +12,8 @@
     - [实战:写一个自己的子模块](docs/startup/task1.md)
 - 八大构造 basic
     - [Component组件的两种用法:页面组件/标签组件](docs/basic/1.component.md)
+- 前端CICD
+    - [Library企业组件库的设计](docs/cicd/library.md)
 - 前端测试：testing
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
