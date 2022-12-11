@@ -1,6 +1,6 @@
 <nova-video-header (search)="search($event)"></nova-video-header>
 
-<div class="nav-">
+<div class="nav">
     <div class="nav-close">
         <ng-container *ngFor="let nav of navList">
             <div *ngIf="nav==currentNav" (click)="changeNav(nav)" class="navspan navspan-active">{{nav}}</div>

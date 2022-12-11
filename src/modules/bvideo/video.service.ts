@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Parse } from 'src/services/parse';
+import { ParseObject } from 'src/services/parse-object';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +11,50 @@ export class VideoService {
   VideoData:any[] = []
   showVideoData:any[] = []
   constructor(private router:Router,private http:HttpClient) { 
-    this.getVideoDataByXHR();
-    this.getVideoDataByFetch();
-    this.getVideoDataByHttp();
+    // this.getVideoDataByXHR()
+    // this.getVideoDataByFetch().then(data=>{
+    //   console.log(data)
+    // })
+    // this.getVideoDataByHttp();
+    // this.createVideo();
+    // this.createVideoComment();
+    let videoList = this.getVideoData();
+    videoList.forEach(video=>{
+      delete video.id
+      this.createVideo(video)
+    })
   }
 
+  async createVideo(video:any){
+    let url = "http://metapunk.cn:9999/parse/classes/Video"
+    let body = video
+    let options = {
+      headers:{
+        "X-Parse-Application-Id": "dev",
+        "Content-Type": "application/json"
+      }
+    }
+    let data:any = await this.http.post(url,body,options).toPromise();
+    console.log(data);
+  }
+  async createVideoComment(){
+    let videoC = {
+        user: {__type:"Pointer",className:"_User",objectId:"gTGgpmiEhq"},
+        video:  {__type:"Pointer",className:"Video",objectId:"0awhCo2ORK"},
+        content: "666"
+    }
+
+    let url = "http://metapunk.cn:9999/parse/classes/VideoComment"
+    let body = videoC
+    let options = {
+      headers:{
+        "X-Parse-Application-Id": "dev",
+        "Content-Type": "application/json"
+      }
+    }
+    let data:any = await this.http.post(url,body,options).toPromise();
+    console.log(data);
+  }
   goVideoDetail(id:number){
     this.router.navigate(["/bvideo/video"],{queryParams:{id:id}})
   }
@@ -30,6 +71,13 @@ export class VideoService {
       return this.showVideoData;
   }
 
+  async getVideoByIdFromParse(objectId:string){
+    let video = new ParseObject();
+    video.className = "Video"
+    let data = await video.get(objectId);
+    return data;
+  }
+
   getVideoById(id:number){
     return this.VideoData.find(item=>item.id==id)
   }
@@ -38,7 +86,7 @@ export class VideoService {
    * Angular Http
    */
   async getVideoDataByHttp(){
-    console.log("getVideoDataByHttp")
+    // console.log("getVideoDataByHttp")
     let data = await this.http.get("http://metapunk.cn/test/video.json").toPromise();
     console.log(data);
   }
@@ -68,7 +116,7 @@ export class VideoService {
   */
   getVideoDataByXHR(){
     // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
-    console.log("getVideoDataByXHR")
+    // console.log("getVideoDataByXHR")
     return new Promise((resolve,reject)=>{
 
       let req = new XMLHttpRequest();
@@ -149,7 +197,6 @@ export class VideoService {
           countLike: "121.w",
           countComment: "1210",
           title: "为了守护学校我成了偶像"
-
       },
       {
         id:8,

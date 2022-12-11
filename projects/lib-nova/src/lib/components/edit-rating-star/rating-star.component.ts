@@ -1,4 +1,5 @@
 import { Component,  Input , OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nova-rating-star',
@@ -39,6 +40,10 @@ export class EditRatingStarComponent implements OnInit {
 
     let score = index+1
     this.makeStar(score)
+  }
+  onOverRxjs(ev:Event){
+    // let overOb = Observable.from(ev).debouce(500);
+    // overOb.subscribe(data=>{})
   }
   outing:boolean = false // 是否正在滑出
   onOut(){
