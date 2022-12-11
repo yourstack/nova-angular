@@ -49,3 +49,7 @@ docs/case-tslang/**/*.js
 
 # Backend
 node_modules/
+
+# Electron 
+electron/www/**/*
+electron/dist/**/*
