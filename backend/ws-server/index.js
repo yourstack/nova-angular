@@ -9,18 +9,20 @@ const port = 5000;
 const wsServer = new ws.Server({ noServer: true });
 wsServer.on('connection', socket => {
     socket.on('message', message => {
-
+        message = message.toString();
+        console.log(message.toString());
         wsServer.clients.forEach(function each(client) {
             if (client.readyState === ws.OPEN) {
                 setTimeout(function () {
+
+                    
+                    let content = `服务端已收到您的消息，房间${message.room}，用户${message.user}`;
                     client.send(
-
-                        Buffer.from(JSON.stringify({ "source": "server", "content": "response from server" }))
-
+                        Buffer.from(JSON.stringify({ "source": "server", "content": content }))
                         , { binary: false });
+
+
                 }, 1000);
-
-
             }
         });
 

@@ -1,5 +1,8 @@
 // src\services\websocket.service.ts
+// WebSocket https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 import { Injectable } from "@angular/core";
+
+// RXJS相关的依赖引入
 import { Observable, Observer } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { Subject } from 'rxjs';
@@ -10,6 +13,8 @@ const CHAT_URL = "ws://localhost:5000";
 export interface Message {
     source: string;
     content: string;
+    room?:string;
+    user?:string;
 }
 
 @Injectable({

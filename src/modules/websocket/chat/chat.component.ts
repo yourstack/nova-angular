@@ -11,6 +11,8 @@ export class ChatComponent {
   content = '';
   received:any[] = [];
   sent:any[] = [];
+  user:string = "Ryane";
+  room:string = "angular";
 
   constructor(private WebsocketService: WebsocketService) {
     WebsocketService.messages.subscribe(msg => {
@@ -22,10 +24,14 @@ export class ChatComponent {
   sendMsg() {
     let message = {
       source: '',
-      content: ''
+      content: '',
+      room:"",
+      user:""
     };
     message.source = 'localhost';
     message.content = this.content;
+    message.room = this.room
+    message.user = this.user
 
     this.sent.push(message);
     this.WebsocketService.messages.next(message);
