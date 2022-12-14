@@ -23,7 +23,9 @@
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
 - 文档规范：Document
-    - [UML技术文档编写规范](docs/uml/document.md)
+    - [UML:技术文档编写规范](docs/uml/document.md)
+- 后端服务：Backend
+    - [Parse:微服务测试环境](docs/backend/parse.md)
 
 
 # 常用命令
