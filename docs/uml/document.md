@@ -119,3 +119,13 @@ deactivate 项目经理
 
 @enduml
 ```
+
+# FAQ:MD文档中plantuml代码端无法显示图片的自查流程
+
+1. 检查插件PlantUML是否安装成功
+2. 检查.vscode/settings.json里面的配置内容
+3. 检查.md文件里面代码端格式：
+
+\`\`\`plantuml
+
+\`\`\`
