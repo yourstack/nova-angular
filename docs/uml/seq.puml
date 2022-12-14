@@ -1,6 +1,0 @@
-@startuml
-用户->小程序:访问音乐列表页面
-小程序->后端:请求音乐列表数据 /zmusic/muisc
-小程序<-后端:返回音乐列表数据 [{music}]
-note over 小程序, 后端: 音乐数据包含：title标题 author作者 audio音乐 likeCount点赞数
-@enduml
