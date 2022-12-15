@@ -21,7 +21,7 @@ export class VideoService {
     let videoList = this.getVideoData();
     videoList.forEach(video=>{
       delete video.id
-      this.createVideo(video)
+      // this.createVideo(video)
     })
   }
 

@@ -23,6 +23,12 @@ let gametapRoute ={
 }
 routes.push(gametapRoute)
 
+let ltravelRoute ={
+  path: 'ltravel',
+  loadChildren: () => import('../modules/ltravel/ltravel.module').then(m => m.LtravelModule)
+}
+routes.push(ltravelRoute)
+
 let websocketRoute ={
   path: 'websocket',
   loadChildren: () => import('../modules/websocket/websocket.module').then(m => m.WebsocketModule)

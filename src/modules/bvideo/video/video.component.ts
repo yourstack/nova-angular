@@ -31,8 +31,10 @@ export class VideoComponent implements OnInit {
 
   queryParamsDecode(){
     // 手写查询参数的解析过程
-    let queryParams1 = location.href.split("?")[1].split("&").map(item=>{ return {key:item.split("=")[0],value:decodeURI(item.split("=")[1])} })
-    console.log(queryParams1);
+    if(location.href.split("?")[1] && location.href.split("?")[1].split("&")){
+      let queryParams1 = location.href.split("?")[1].split("&").map(item=>{ return {key:item.split("=")[0],value:decodeURI(item.split("=")[1])} })
+      console.log(queryParams1);
+    }
 
     // 直接使用Angular封装好的
     this.route.queryParams.subscribe(data=>{
