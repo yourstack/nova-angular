@@ -47,6 +47,9 @@ docs/case-tslang/**/*.js
 # ChildProject
 .projects/
 
+# Documents
+docs/**/*.pdf
+
 # Backend
 node_modules/
 
