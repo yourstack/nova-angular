@@ -32,6 +32,15 @@ describe('BVideo Page home test', () => {
         cy.get(".vlist").should(vlistEl=>{
             expect(vlistEl.children().length).to.be.greaterThan(2)
         })
+
+        // 模拟用户输入行为 https://docs.cypress.io/api/commands/type
+        cy.get("input",{timeout:1000}).type("BOSS")
+        cy.get(".vlist",{timeout:1000}).should(vlistEl=>{
+            expect(vlistEl.children().length).to.be.greaterThan(0)
+        })
+        cy.get(".vlist",{timeout:1000}).find(".video-title")
+        .should("contain.text","BOSS")
+
     })
   })
   
