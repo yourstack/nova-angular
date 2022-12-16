@@ -109,7 +109,20 @@ export class VideoService {
       return null
     }
   }
+  async getVideoDataFromParse(){
+    let response = await fetch("http://metapunk.cn:9999/parse/classes/Video?limit=5", {
+                "credentials": "omit",
+                "headers": {
+                    "X-Parse-Application-Id": "dev",
+                },
+                "method": "GET",
+                "mode": "cors"
+            })
 
+            let data = await response.json()
+            let VideoList:any = data.results;
+            console.log("VideoList",VideoList)
+  }
   /*
     JavaScript
     AJAX 通过XMLHttpRequest发送http请求

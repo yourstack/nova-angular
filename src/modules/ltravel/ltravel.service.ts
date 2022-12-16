@@ -67,4 +67,19 @@ export class LtravelService {
       }
     })
   }
+
+  async getVideoDataFromFetch(){
+    let response = await fetch("http://metapunk.cn:9999/parse/classes/TravelNote?limit=5", {
+                "credentials": "omit",
+                "headers": {
+                    "X-Parse-Application-Id": "dev",
+                },
+                "method": "GET",
+                "mode": "cors"
+    })
+
+    let data = await response.json()
+    let NoteList:any = data.results;
+    console.log("NoteList",NoteList)
+  }
 }
