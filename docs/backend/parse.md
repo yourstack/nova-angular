@@ -18,6 +18,20 @@ parse-dashboard --appId dev --masterKey devmk --serverURL http://xxx.cn:9999/par
 - 对象接口（CRUD）：https://docs.parseplatform.org/rest/guide/#objects
 - 查询接口：https://docs.parseplatform.org/rest/guide/#queries
 
+``` sh
+# 数据查询接口,VideoWork为查询Schema表名
+https://YOUR.PARSE-SERVER.HERE/parse/classes/VideoWork
+
+# 常用查询参数 ?key=value
+# order 排列
+order=score,-name # 根据分数正序排列，再根据名称倒序排列
+# limit skip 限制与跳过
+limit=200 # 获取200条
+skip=400 # 跳过前400条
+# keys 指定表头字段
+keys=score,playerName # 仅获取字段：playerName球员名称、score分数
+```
+
 # HTTP接口测试
 
 - 启动看板，进入左下角ApiConsole界面
