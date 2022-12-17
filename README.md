@@ -15,7 +15,7 @@
     - [DataBinding双向数据绑定:输入属性/输出事件](docs/basic/databinding.md)
     - [Service:服务实现多组件数据共享](docs/basic/service.md)
         - [HTTP网络请求基础与示例](docs/backend/request.md)
-        - [FAQ:如何将HTTP请求数据，渲染到页面上](docs/basic/faq.http2html.md)
+        - [FAQ:如何将HTTP请求数据，渲染到页面上](docs/faq/faq.http2html.md)
     - [Directive:属性选择器的精准控制](docs/basic/directive.md)
 - 前端CICD
     - [Library:企业组件库的设计](docs/cicd/library.md)
