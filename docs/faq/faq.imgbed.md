@@ -15,3 +15,4 @@
         - 路过图床 (https://imgtu.com/) 也算是一个比较老牌知名的图床网站了，非常稳定，但速度一般。无需注册，最大支持 10M 图片上传，支持 HTTPS。
 - 生产环境
     - 建议使用CDN或云对象存储存储静态资源
+        - 七牛云-注册领免费10G：https://portal.qiniu.com/signup?invitation_type=1&invitation_key=1382401290
