@@ -1,0 +1,39 @@
+
+
+
+
+
+<mat-drawer-container class="admin-container" autosize>
+  <!-- 左侧侧拉导航栏 -->
+    <mat-drawer #drawer class="admin-sidenav" mode="side">
+      <p>系统路由</p>
+      <mat-selection-list #routes [multiple]="false">
+        <mat-list-option (click)="goRoute(route)" *ngFor="let route of RouteList" [value]="route">
+          {{route.name}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-drawer>
+  <!-- End Of 左侧侧拉导航栏 -->
+
+  <div class="admin-sidenav-content">
+       <!-- 顶部的菜单栏 -->
+       <mat-toolbar color="primary">
+        <button (click)="drawer.toggle()" mat-icon-button class="admin-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>My App</span>
+        <span class="admin-spacer"></span>
+        <button mat-icon-button class="admin-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="admin-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+      <!-- End Of 顶部的菜单栏 -->
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+</mat-drawer-container>

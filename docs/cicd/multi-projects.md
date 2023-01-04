@@ -1,5 +1,54 @@
 # MultiModule:多模块及多库依赖实践
 
+# 实例：创建一个用于管理端的子项目
+- 第一步：创建子项目 admin-gametap
+``` 
+# 当前项目下，创建一个子项目
+ng g application admin-gametap --style=scss --routing
+# 启动调试子项目
+ng s --project=admin-gametap
+```
+- 第二步：子项目的根模块，编写管理端的左右布局
+    - 相关依赖：
+        - Material：https://material.angular.cn/
+        - AntDesign：https://ng.ant.design/docs/introduce/zh
+``` sh
+# 安装Material到子项目，默认y，默认开启动画Animation
+ng add @angular/material --project=admin-gametap
+
+# Skipping installation: Package already installed
+# ? Choose a prebuilt theme name, or "custom" for a custom theme: Indigo/Pink        [ Preview:                                            
+# https://material.angular.io?theme=indigo-pink ]                                                                                          
+# ? Set up global Angular Material typography styles? Yes
+# ? Include the Angular animations module? Include and enable animations
+# UPDATE package.json (1509 bytes)
+# ✔ Packages installed successfully.
+# UPDATE projects/admin-gametap/src/app/app.module.ts (502 bytes)
+# UPDATE angular.json (17970 bytes)
+# UPDATE projects/admin-gametap/src/index.html (580 bytes)
+# UPDATE projects/admin-gametap/src/styles.scss (181 bytes)
+```
+
+继续用组件开发后台管理的根模块样式
+- 示例代码：
+    - [admin-gametap app.module.ts](../../projects/admin-gametap/src/app/app.module.ts)
+    - [admin-gametap app.component.html](../../projects/admin-gametap/src/app/app.component.html)
+``` sh 
+# https://material.angular.cn/components/toolbar/api
+# app.module.ts 引入相关的Mat模块
+# app.component.html 编写代码
+```
+
+- 第三步：子项目子模块的管理模块，列表页/编辑页
+``` sh
+cd nova-angular/projects/admin-gametap/src/modules
+ng g module gameadmin --routing
+
+cd gameadmin
+ng g component gamelist --module gameadmin
+ng g component gameedit --module gameadmin
+```
+
 # FAQ.组件库是否会导致main.js增加
 
 ## 测试结论:组件库本身不会增加额外main.js体积
