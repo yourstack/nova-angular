@@ -1,0 +1,19 @@
+
+<ng-container *ngIf="debug">
+    <p>输入区域：</p>
+
+    <p>方法一：通过keyup事件，监听变化赋值给inputText</p>
+
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input -->
+    <input type="text" (keyup)="onKeyUp($event)">
+
+    <p>方法二：FormsModule的双向绑定特性</p>
+</ng-container>
+
+<ng-container *ngIf="editable">
+    <input type="text" [(ngModel)]="inputText">
+    <button (click)="addTag()">添加</button>
+</ng-container>
+
+<p *ngIf="debug">展示区域：</p>
+<span class="tag" *ngFor="let tag of tagList">{{tag}}</span>

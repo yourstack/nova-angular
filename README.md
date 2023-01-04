@@ -12,9 +12,11 @@
     - [实战:写一个自己的子模块](docs/startup/task1.md)
 - 八大构造 basic
     - [Component组件的两种用法:页面组件/标签组件](docs/basic/1.component.md)
+    - [Pipe管道:页面数据的快速处理工具](docs/basic/pipe.md)
+    - [Route路由:页面跳转及参数传递页面数据的快速处理工具](docs/basic/route.md)
 - 前端测试：testing
-    - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
-    - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
+    - [单元测试:检测最小可测试单元](docs/testing/unit-test.md)
+    - [对端测试:模拟真实用户场景](docs/testing/e2e-test.md)
 
 
 # 常用命令

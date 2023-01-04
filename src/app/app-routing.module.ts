@@ -12,6 +12,13 @@ let bvideoRoute ={
 
 routes.push(bvideoRoute)
 
+let gametapRoute ={
+  path: 'gametap',
+  loadChildren: () => import('../modules/gametap/gametap.module').then(m => m.GametapModule)
+}
+
+routes.push(gametapRoute)
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
