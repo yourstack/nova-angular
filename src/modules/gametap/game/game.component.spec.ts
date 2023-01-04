@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ToKPipe } from '../pipes/to-k.pipe';
 import { GameComponent } from './game.component';
 
 describe('GameComponent', () => {
@@ -8,7 +8,7 @@ describe('GameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameComponent ]
+      declarations: [ GameComponent,ToKPipe ]
     })
     .compileComponents();
 

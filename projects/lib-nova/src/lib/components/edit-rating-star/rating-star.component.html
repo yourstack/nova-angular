@@ -1,0 +1,8 @@
+<div class="stars">
+	<ng-container *ngFor="let item of stars;let i = index;">
+		<img [src]="item" 
+		(mouseout)="onOut()" (mouseover)="onOver(i)" 
+		(click)="setScore(i)" 
+		/>
+	</ng-container>
+</div>

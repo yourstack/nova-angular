@@ -1,0 +1,11 @@
+' 视频项目类图
+@startuml
+
+' 视频作品
+class VideoWork {
+    .. 数据字段 ..
+    title: String
+    cover: String
+}
+
+@enduml

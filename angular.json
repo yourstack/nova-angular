@@ -27,12 +27,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json",
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
@@ -82,6 +86,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -90,12 +95,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           }
         },
         "cypress-run": {
@@ -141,6 +148,309 @@
             "production": {
               "devServerTarget": "nova-angular:serve:production"
             }
+          }
+        }
+      }
+    },
+    "nova-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/nova-app",
+      "sourceRoot": "projects/nova-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nova-app",
+            "index": "projects/nova-app/src/index.html",
+            "main": "projects/nova-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/nova-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/nova-app/src/favicon.ico",
+              "projects/nova-app/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "projects/nova-app/src/styles.scss",
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/display.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "projects/nova-app/src/theme/variables.css"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "nova-app:build:production"
+            },
+            "development": {
+              "browserTarget": "nova-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nova-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "codeCoverage": true,
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/nova-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/nova-app/src/favicon.ico",
+              "projects/nova-app/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "projects/nova-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "nova-app:ionic-cordova-build",
+            "devServerTarget": "nova-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "nova-app:ionic-cordova-build:production",
+              "devServerTarget": "nova-app:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "nova-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nova-app:build:production"
+            }
+          }
+        }
+      }
+    },
+    "lib-nova": {
+      "projectType": "library",
+      "root": "projects/lib-nova",
+      "sourceRoot": "projects/lib-nova/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lib-nova/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-nova/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib-nova/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "codeCoverage": true,
+            "tsConfig": "projects/lib-nova/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "nova-admin": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/nova-admin",
+      "sourceRoot": "projects/nova-admin/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nova-admin",
+            "index": "projects/nova-admin/src/index.html",
+            "main": "projects/nova-admin/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/nova-admin/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/nova-admin/src/favicon.ico",
+              "projects/nova-admin/src/assets",
+              "projects/nova-admin/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/nova-admin/src/styles.scss"
+            ],
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/nova-admin/ngsw-config.json"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "nova-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "nova-admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nova-admin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "codeCoverage": true,
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/nova-admin/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/nova-admin/src/favicon.ico",
+              "projects/nova-admin/src/assets",
+              "projects/nova-admin/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/nova-admin/src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }

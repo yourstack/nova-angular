@@ -1,0 +1,66 @@
+
+
+<mat-drawer-container class="example-container" autosize>
+  <!-- 侧栏导航 -->
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>系统路由</p>
+    <mat-selection-list #routes [multiple]="false">
+      <mat-list-option (click)="goRoute(route)" *ngFor="let route of RouteList" [value]="route">
+        {{route.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+   <!-- 后台的顶部工具条 -->
+   <p>
+    <mat-toolbar color="primary">
+      <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{title}}</span>
+      <span class="example-spacer"></span>
+
+      <!-- 用户逻辑 -->
+      <!-- 更多菜单 -->
+      <!-- 字体图标 https://fonts.google.com/icons?utm_source=developers.google.com&utm_medium=referral -->
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>login</mat-icon>
+          <span>用户登录</span>
+        </button>
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon>power-setting-new</mat-icon>
+          <span>退出系统</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>禁用通知</span>
+        </button>
+      </mat-menu>
+      
+      <!-- 喜欢 -->
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button> -->
+      <!-- 分享 -->
+      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> -->
+    </mat-toolbar>
+  </p>
+
+  
+  <!-- 主题内容 -->
+  <div class="example-sidenav-content">
+   
+    <!-- 页面路由插槽 -->
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
+
+
+
+

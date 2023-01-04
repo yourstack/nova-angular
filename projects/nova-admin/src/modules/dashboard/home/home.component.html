@@ -1,0 +1,22 @@
+
+
+<h1>项目看板</h1>
+
+<nova-project-card (click)="showProjectName(currentProject)" [project]="currentProject"></nova-project-card>
+
+<div class="pcard" (click)="showProjectName(currentProject)">
+    <div class="pcard-cover">
+        <img src="{{currentProject.cover}}" alt="" srcset="">
+    </div>
+    <div class="pcard-title">
+        {{currentProject.title}}
+    </div>
+    <div class="pcard-desc">
+        作者：{{currentProject.author}}
+    </div>
+</div>
+
+
+<ng-container *ngFor="let project of ProjectList;let i = index;">
+    <nova-project-card *ngIf="project.isEnabled==true" (click)="showProjectName(project)" [project]="project"></nova-project-card>
+</ng-container>

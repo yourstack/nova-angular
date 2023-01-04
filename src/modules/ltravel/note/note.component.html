@@ -1,0 +1,14 @@
+<h1>标题：{{note.title}}</h1>
+<h2>作者：{{note.author}}</h2>
+
+<div>
+    {{note.content}}
+</div>
+
+
+<h1>相关笔记：</h1>
+<ul>
+    <ng-container *ngFor="let note of recommandNoteList;let i = index">
+        <li (click)="travelServ.goNoteDetail(note)">{{i}}.{{note.title}} (by {{note.author}})</li>
+    </ng-container>
+</ul>

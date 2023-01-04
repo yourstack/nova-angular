@@ -1,0 +1,60 @@
+' 音频FM项目类图
+@startuml
+
+AudioWork *-- "AudioWork" : chapers包含自身
+AudioWork *-- "AudioActor" 
+' (AudioWork, User) . AudioActor : 单作品多演员
+' (AudioWork, User) . AudioWorkDanmu : 单作品多弹幕
+AudioWork *-- "AudioWorkDanmu" : 单作品多弹幕
+AudioWork *-- "AudioWorkComment" : 单作品多评论
+' AudioWork "many" --* "1" User : 作品的author字段指向用户
+
+' 音频作品
+class AudioWork {
+    .. 数据字段 ..
+    title: String
+    cover: String
+    .. 权限字段 ..
+    ' 是否发布
+    isPublished: Boolean
+    .. 关联字段 ..
+    author: Pointer<User>
+    actors: Array<AudioActor>
+    chapters: Array<AudioWork>
+}
+
+class AudioActor{
+    work: Pointer<AudioWork>
+    user: Pointer<User>
+    role: String
+    studio: String
+}
+
+class User{
+    name: String
+    avatar: String
+    followCount: Number
+}
+
+
+' 音频弹幕
+class AudioWorkDanmu {
+    work: Pointer<AudioWork>
+    content: String
+    user: Pointer<User>
+    ' 弹幕时间
+    time: Number
+    ' 发布时间
+    createAt: Date
+}
+
+' 音频评论表
+class AudioWorkComment {
+    work: Pointer<AudioWork>
+    user: Pointer<User>
+    content: String
+    createAt: Date
+}
+
+
+@enduml

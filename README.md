@@ -11,18 +11,32 @@
     - [认识Angular中常见的Typescript语法](docs/startup/3.tslang.md)
     - [实战:写一个自己的子模块](docs/startup/task1.md)
 - 八大构造 basic
-    - [Component组件的两种用法:页面组件/标签组件](docs/basic/1.component.md)
-    - [Pipe管道:页面数据的快速处理工具](docs/basic/pipe.md)
+    - [Component组件的两种用法:页面组件/标签组件](docs/basic/component.md)
     - [Route路由:页面跳转及参数传递页面数据的快速处理工具](docs/basic/route.md)
+    - [DataBinding双向数据绑定:输入属性/输出事件](docs/basic/databinding.md)
+    - [Pipe管道:页面数据的快速处理工具](docs/basic/pipe.md)
+    - [Service:服务实现多组件数据共享](docs/basic/service.md)
+        - [HTTP网络请求基础与示例](docs/backend/request.md)
+        - [FAQ:如何将HTTP请求数据，渲染到页面上](docs/faq/faq.http2html.md)
+    - [Directive:属性选择器的精准控制](docs/basic/directive.md)
+- 前端CICD
+    - [Library:企业组件库的设计](docs/cicd/library.md)
+    - [Scripts:编写跨平台自动化脚本](scripts/README.md)
+    - [MultiProjects:多模块及多库依赖实践](docs/cicd/multi-projects.md)
 - 前端测试：testing
-    - [单元测试:检测最小可测试单元](docs/testing/unit-test.md)
-    - [对端测试:模拟真实用户场景](docs/testing/e2e-test.md)
-
+    - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
+    - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
+- 文档规范：Document
+    - [UML:技术文档编写规范](docs/uml/document.md)
+- 后端服务：Backend
+    - [Parse:微服务测试环境](docs/backend/parse.md)
+        - [FAQ:后台数据添加图片地址前端不显示](docs/faq/faq.imgbed.md)
 
 # 常用命令
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
 ## 测试预览 Development server
+- 新项目需要运行 `npm i` 安装基础依赖至：node_modules
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
