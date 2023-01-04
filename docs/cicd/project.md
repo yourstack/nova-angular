@@ -76,8 +76,8 @@ ng g component gameitem-card --module gameadmin
 - 页面区域：通过API获取Project列表
 
 ### 游戏编辑页实现添加/编辑功能
-- Dialog组件
-- Edit页面
-
-## 第四步：实现管理端登录权限
-- 
+- Edit页面 
+    - 编辑传参 id
+    - 新增传参 new
+- 页面代码
+    - [gameedit.component.ts](/projects/admin-gametap/src/modules/gameadmin/gameedit/gameedit.component.ts)

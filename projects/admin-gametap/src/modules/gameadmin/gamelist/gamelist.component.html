@@ -7,12 +7,12 @@
 
     <span class="example-spacer"></span>
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button (click)="search()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>search</mat-icon>
       </button>
     <mat-form-field class="example-full-width">
         <mat-label>搜索内容</mat-label>
-        <input matInput placeholder="请输入..." [(ngModel)]="searchText">
+        <input (keyup)="search($event)" matInput placeholder="请输入..." [(ngModel)]="searchText">
         <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
             <mat-icon>close</mat-icon>
           </button>
@@ -31,7 +31,7 @@
     (click)="onShowDelete()" [color]="showDelete?'warn':'accent'">
         <mat-icon>delete</mat-icon>
     </button>
-    <button mat-mini-fab  color="primary">
+    <button (click)="addNewGame()" mat-mini-fab  color="primary">
       <mat-icon>add</mat-icon>
     </button>
     

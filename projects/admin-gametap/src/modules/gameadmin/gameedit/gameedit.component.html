@@ -1,1 +1,47 @@
-<p>gameedit works!</p>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>游戏名称</mat-label>
+      <input  [(ngModel)]="game.name" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>游戏介绍</mat-label>
+      <textarea [(ngModel)]="game.desc" matInput placeholder="" [ngModelOptions]="{standalone: true}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>游戏封面</mat-label>
+        <input  [(ngModel)]="game.cover" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>游戏图标</mat-label>
+        <input  [(ngModel)]="game.icon" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>游戏评分</mat-label>
+        <input type="number" [(ngModel)]="game.score" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>发行商</mat-label>
+        <input  [(ngModel)]="game.publish" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>开发商</mat-label>
+        <input  [(ngModel)]="game.developer" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <button (click)="save()" mat-raised-button color="primary" class="example-full-width">保存</button>
+      <button (click)="back()" mat-raised-button class="example-full-width">返回</button>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>选择发布时间</mat-label>
+        <input [(ngModel)]="game.publishDate" matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+
+  </form>

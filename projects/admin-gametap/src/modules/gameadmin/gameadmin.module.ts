@@ -12,6 +12,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from "@angular/material/badge"
+import {MatDatepickerModule} from "@angular/material/datepicker"
+
+
 import { GameitemCardComponent } from './gameitem-card/gameitem-card.component';
 
 @NgModule({
@@ -25,7 +28,7 @@ import { GameitemCardComponent } from './gameitem-card/gameitem-card.component';
     GameadminRoutingModule,
     // 第三方组件
     MatCardModule,MatButtonModule,
-    MatToolbarModule,MatInputModule,MatIconModule,MatBadgeModule
+    MatToolbarModule,MatInputModule,MatIconModule,MatBadgeModule,MatDatepickerModule
   ]
 })
 export class GameadminModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gamelist',
@@ -11,12 +12,28 @@ export class GamelistComponent {
   searchText:string = ""
   showDelete:boolean = false;
   deleteCount:number = 0;
-  constructor(){
+  constructor(private router:Router){
     this.refresh();
+  }
+
+  search(ev?:Event){
+    if(ev){
+      if((ev as any).code != "Enter") return
+    }
+    // where={"isDeleted":false,"name":{"$regex":"${this.searchText}"}}
+    let searchParams = `,"name":{"$regex":"${this.searchText}"}`
+    this.getGameList(searchParams)
   }
   refresh(){
     this.getGameList();
     this.getDeleteCount();
+  }
+  addNewGame(){
+    this.router.navigate(["/game/edit"],{
+      queryParams:{
+        new:true        
+      }
+    })
   }
   onShowDelete(){
     console.log("onShowDelete")
@@ -38,7 +55,7 @@ export class GamelistComponent {
     let data = await result.json();
     this.deleteCount = data.count || 0
   }
-  async getGameList(){
+  async getGameList(searchParams=""){
     let url = "http://metapunk.cn:9999/parse/classes/Game?"
 
     // 拼接排序条件
@@ -48,7 +65,10 @@ export class GamelistComponent {
     // 拼接匹配条件
     let paramsWhere
     if(!this.showDelete){
-      paramsWhere = `where={"isDeleted":false}`
+      paramsWhere = `where={"isDeleted":false${searchParams}}`
+      url += "&" + paramsWhere
+    }else{
+      paramsWhere = `where={"isDeleted":true${searchParams}}`
       url += "&" + paramsWhere
     }
 
