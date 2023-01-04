@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+    <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+        <img [src]="game.icon" alt="">
+    </div>
+    <mat-card-title [matBadge]="game.score" matBadgeOverlap="false">{{game.name || "暂无"}}</mat-card-title>
+    <mat-card-subtitle>{{game.publish}}/{{game.developer}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="cover-img" style="background-image: url({{game.cover}});background-size: cover;">
+        <!-- <img mat-card-image [src]="game.cover" alt="Photo of {{game.name}}"> -->
+    </div>
+    
+    <mat-card-content>
+    <p>
+        {{game.desc}}
+    </p>
+    </mat-card-content>
+    <mat-card-actions>
+    <button (click)="edit()" mat-button>编辑</button>
+    <button *ngIf="game.isDeleted == false" (click)="delete()" mat-button>删除</button>
+    <button *ngIf="game.isDeleted == true" (click)="restore()" mat-button>撤回</button>
+    </mat-card-actions>
+</mat-card>

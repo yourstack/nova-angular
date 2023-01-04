@@ -21,7 +21,7 @@
         <button (click)="drawer.toggle()" mat-icon-button class="admin-icon" aria-label="Example icon-button with menu icon">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>My App</span>
+        <span>GameTap管理后台</span>
         <span class="admin-spacer"></span>
         <button mat-icon-button class="admin-icon favorite-icon" aria-label="Example icon-button with heart icon">
           <mat-icon>favorite</mat-icon>
@@ -32,8 +32,9 @@
       </mat-toolbar>
       <!-- End Of 顶部的菜单栏 -->
 
-      <router-outlet></router-outlet>
-
+      <div class="main-container">
+        <router-outlet></router-outlet>
+      </div>
     </div>
 
 </mat-drawer-container>

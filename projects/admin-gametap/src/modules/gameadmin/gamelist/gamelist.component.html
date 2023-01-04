@@ -1,24 +1,50 @@
 
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+    <span>游戏管理</span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    <mat-form-field class="example-full-width">
+        <mat-label>搜索内容</mat-label>
+        <input matInput placeholder="请输入..." [(ngModel)]="searchText">
+        <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+            <mat-icon>close</mat-icon>
+          </button>
+    </mat-form-field>
+
+    <span class="example-spacer"></span>
+
+    <!-- <mat-form-field class="example-form-field">
+        <mat-label>搜索内容</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText">
+        <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field> -->
+    <button class="trush-button" mat-mini-fab [matBadge]="deleteCount" matBadgeOverlap="false"
+    (click)="onShowDelete()" [color]="showDelete?'warn':'accent'">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-mini-fab  color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+    
+  </mat-toolbar>
 
 
-<ng-container *ngFor="let project of projectList">
-    <mat-card class="example-card">
-        <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
+
+<ng-container *ngFor="let game of GameList">
+    <nova-gameitem-card
+     [game]="game"
+     (delete)="deleteGame($event)"
+     (edit)="editGame($event)"
+     (restore)="deleteGame($event,true)"
+     >
+    </nova-gameitem-card>
 </ng-container>

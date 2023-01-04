@@ -21,6 +21,7 @@
     - [Directive:属性选择器的精准控制](docs/basic/directive.md)
 - 前端CICD
     - [Library:企业组件库的设计](docs/cicd/library.md)
+    - [Project:创建一个用于管理端的子项目](/docs/cicd/project.md)
     - [Scripts:编写跨平台自动化脚本](scripts/README.md)
     - [MultiProjects:多模块及多库依赖实践](docs/cicd/multi-projects.md)
 - 前端测试：testing
