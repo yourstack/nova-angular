@@ -179,3 +179,5 @@ ng g component commentitem --module=gameadmin
 cd projects/admin-gametap/src/modules/gameadmin
 ng g component edit-pointer --module=gameadmin
 ```
+
+- 完整代码：[ryanemax feat: edit-pointer component 2336ecd](https://gitee.com/ryanemax/nova-angular/commit/2336ecd362f66aec3beb400ce748620bf556bb4f)
