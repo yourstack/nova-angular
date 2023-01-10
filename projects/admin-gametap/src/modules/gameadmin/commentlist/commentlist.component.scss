@@ -1,0 +1,25 @@
+.example-card {
+    max-width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+// 列表工具条
+mat-toolbar{
+    height:70px;
+    mat-form-field{
+        margin-top:20px;
+        margin-left:5px;
+    }
+}
+.example-spacer {
+    flex: 1 1 auto;
+    }
+
+    .trush-button{
+        margin-right:25px;
+    }

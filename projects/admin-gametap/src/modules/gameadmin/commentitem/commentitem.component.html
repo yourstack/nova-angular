@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+            <img [src]="comment.user.avatar" alt="">
+        </div>
+        <mat-card-title>
+            {{comment.user?.nickname || "未命名"}}
+            评论了游戏：{{comment.game.name}}
+        </mat-card-title>
+        <mat-card-subtitle>{{comment.createdAt}}/{{comment.developer}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+    <p>
+        {{comment.content}}
+    </p>
+    </mat-card-content>
+    <mat-card-actions>
+    <button (click)="edit()" mat-button>编辑</button>
+    <button *ngIf="comment.isDeleted == false" (click)="delete()" mat-button>删除</button>
+    <button *ngIf="comment.isDeleted == true" (click)="restore()" mat-button>撤回</button>
+    </mat-card-actions>
+</mat-card>

@@ -16,12 +16,20 @@ import {MatDatepickerModule} from "@angular/material/datepicker"
 
 
 import { GameitemCardComponent } from './gameitem-card/gameitem-card.component';
+import { CommenteditComponent } from './commentedit/commentedit.component';
+import { CommentlistComponent } from './commentlist/commentlist.component';
+import { CommentitemComponent } from './commentitem/commentitem.component';
+import { EditPointerComponent } from './edit-pointer/edit-pointer.component';
 
 @NgModule({
   declarations: [
     GamelistComponent,
     GameeditComponent,
-    GameitemCardComponent
+    GameitemCardComponent,
+    CommenteditComponent,
+    CommentlistComponent,
+    CommentitemComponent,
+    EditPointerComponent
   ],
   imports: [
     CommonModule,FormsModule,

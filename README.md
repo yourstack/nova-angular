@@ -12,6 +12,7 @@
     - [实战:写一个自己的子模块](docs/startup/task1.md)
 - 八大构造 basic
     - [Component组件的两种用法:页面组件/标签组件](docs/basic/component.md)
+        - [示例：数据组件 EditPointer指针编辑](/docs/backend/component-edit-pointer.md)
     - [Route路由:页面跳转及参数传递页面数据的快速处理工具](docs/basic/route.md)
     - [DataBinding双向数据绑定:输入属性/输出事件](docs/basic/databinding.md)
     - [Pipe管道:页面数据的快速处理工具](docs/basic/pipe.md)

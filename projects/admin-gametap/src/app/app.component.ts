@@ -12,6 +12,7 @@ export class AppComponent {
   RouteList = [
     // {path:"/dashboard/home",name:"后台首页"},
     {path:"/game/list",name:"游戏管理"},
+    {path:"/game/comment/list",name:"评论管理"},
     // {path:"/bvideo/video?id=3",name:"游戏详情"}
   ]
   constructor(private router:Router){

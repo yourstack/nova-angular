@@ -1,0 +1,24 @@
+<form class="example-form">
+
+    <p>评论用户</p>
+    <nova-edit-pointer 
+    [(value)]="comment.user" 
+    [className]="'_User'"
+    [searchCol]="'nickname'"
+    ></nova-edit-pointer>
+
+    <p>评论游戏</p>
+    <nova-edit-pointer 
+    [(value)]="comment.game" 
+    [className]="'Game'"
+    [searchCol]="'name'"
+    ></nova-edit-pointer>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>评论内容</mat-label>
+        <input [(ngModel)]="comment.content" matInput placeholder="" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <button (click)="save()" mat-raised-button color="primary" class="example-full-width">保存</button>
+      <button (click)="back()" mat-raised-button class="example-full-width">返回</button>
+  </form>

@@ -1,0 +1,10 @@
+
+<input type="text" (keyup)="onSearch()" [(ngModel)]="searchText">
+
+<ng-container>
+    已选择：<span *ngIf="objectData">{{objectData[searchCol]}}</span>
+</ng-container>
+
+<ul>
+    <li *ngFor="let item of list"><span>{{item[searchCol]}}</span><button (click)="pickItem(item)">选择</button></li>
+</ul>
