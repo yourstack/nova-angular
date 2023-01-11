@@ -102,6 +102,7 @@ class GameComment {
 - JS中没有Pointer类型，该类型是这个后端接口服务自己定义的
     - 因此，我们应该查询接口文档找到Pointer具体格式：https://docs.parseplatform.org/rest/guide/
 - 指针类型的完整格式：
+
 ``` js
 // 官方格式 对Pointer指针的描写
 // __type Pointer 这个数据对象是指针
@@ -150,9 +151,15 @@ ng g component commentitem --module=gameadmin
 <!-- className @Input string 指针指向的类名Schema -->
 <!-- searchCol @Input string 对应的名称搜索字段 -->
 <nova-edit-pointer 
-[(value)]="value" 
+[(value)]="comment.game" 
 [className]="'Game'"
 [searchCol]="'name'"
+></nova-edit-pointer>
+
+<nova-edit-pointer 
+[(value)]="comment.user" 
+[className]="'_User'"
+[searchCol]="'nickname'"
 ></nova-edit-pointer>
 ```
 
@@ -165,12 +172,26 @@ ng g component commentitem --module=gameadmin
         - 选择按钮 button#pick
 - 数据逻辑 参数及方法
     - 参数
-        - 
+        - value
+        - className
+        - searchCol
+        - objectData
+        - list
     - 方法
         - input#pointer
             - (keyup) => 根据用户输入搜索数据列表
         - button#pick
             - (clik) => 选择该数据
+
+## 注意：父子组件数据传递的逻辑
+Component 组件双向绑定：https://angular.cn/guide/two-way-binding
+
+- 页面组件 CommentEditComponent 编辑页面
+    - component.html <nova-xxx-xxx [(value)]="comment.game">
+    - component.ts comment {game:{__type:"Pointer"}}
+- 标签组件 nova-edit-pointer 指针编辑标签
+    - @Input() value
+    - @Output() valueChange
 
 ## 实现过程
 - [edit-pointer/edit-pointer.component.ts](/projects/admin-gametap/src/modules/gameadmin/edit-pointer/edit-pointer.component.ts)

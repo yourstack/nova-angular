@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-gamelist',
@@ -9,10 +10,13 @@ import { Router } from '@angular/router';
 export class GamelistComponent {
 
   GameList:any[] = []
+  /**
+   * @type <string> 搜索方法绑定的搜索查询字符
+   */
   searchText:string = ""
   showDelete:boolean = false;
   deleteCount:number = 0;
-  constructor(private router:Router){
+  constructor(private router:Router,private gameServ:GameService){
     this.refresh();
   }
 
@@ -24,37 +28,19 @@ export class GamelistComponent {
     let searchParams = `,"name":{"$regex":"${this.searchText}"}`
     this.getGameList(searchParams)
   }
-  refresh(){
+  async refresh(){
     this.getGameList();
-    this.getDeleteCount();
+    this.deleteCount = await this.gameServ.getDeleteCount("Game");
   }
   addNewGame(){
-    this.router.navigate(["/game/edit"],{
-      queryParams:{
-        new:true        
-      }
-    })
+    this.gameServ.addNewGame();
   }
   onShowDelete(){
     console.log("onShowDelete")
     this.showDelete=!this.showDelete
     this.refresh()
   }
-  async getDeleteCount(){
-    let url = `http://metapunk.cn:9999/parse/classes/Game?where={"isDeleted":true}&count=1&limit=0`
 
-    let result = await fetch(url, {
-      "headers": {
-        "x-parse-application-id": "dev"
-      },
-      "body": null,
-      "method": "GET",
-      "mode": "cors",
-      "credentials": "omit"
-    });
-    let data = await result.json();
-    this.deleteCount = data.count || 0
-  }
   async getGameList(searchParams=""){
     let url = "http://metapunk.cn:9999/parse/classes/Game?"
 
@@ -93,43 +79,22 @@ export class GamelistComponent {
     ]
   }
 
-  async deleteGame(game:any,isRestore:boolean=false){
-    let isDeleted = true
-    if(isRestore==true){
-      isDeleted = false
-    }
-    // 发送HTTP请求，将isDeleted字段更新为true;
-    let objectId = game.objectId
-    if(objectId){
-      let response = await fetch(`http://metapunk.cn:9999/parse/classes/Game/${objectId}`, {
-        "headers": {
-          "content-type": "text/plain;charset=UTF-8",
-          "x-parse-application-id": "dev"
-        },
-        "body": `{"isDeleted":${isDeleted}}`,
-        "method": "PUT",
-        "mode": "cors",
-        "credentials": "omit"
-      });
-      let data = await response.json();
-      // 成功删除时，HTTP网络请求返回：{"updatedAt":"2023-01-04T08:29:35.195Z"}
-      if(data?.updatedAt){
+  deleteGame(game:any,isRestore:boolean=false){
+    this.gameServ.deleteObject("Game",game,isRestore).then(isSuccess=>{
+      if(isSuccess){
         // 内存变量删除该项
         let idx = this.GameList.findIndex(item=>item.name==game.name)
         this.GameList.splice(idx,1)
-        if(isDeleted){
+        if(!isRestore){
           this.deleteCount ++;
         }else{
           this.deleteCount --;
         }
       }
-      
-    }
-    return
+    })
   }
+
   editGame(game:any){
     console.log(game)
-
-
   }
 }

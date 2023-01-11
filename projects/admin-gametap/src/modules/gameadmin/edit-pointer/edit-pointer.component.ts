@@ -6,6 +6,19 @@ import { Component, Input, Output,EventEmitter, AfterContentInit } from '@angula
   styleUrls: ['./edit-pointer.component.scss']
 })
 export class EditPointerComponent implements AfterContentInit {
+  /**
+   * @typedef
+   * @property {string} __type
+   * @property {stirng} className
+   * @property {stirng} objectId
+   * @example
+   */
+  /**
+   * @type Pointer
+   * @desc 从父组件传入绑定的对象指针数据值
+   * @example
+   * <nova-edit-pointer [(value)]="commnet.game">
+   */
   @Input()
   value!:{__type:string,className:string,objectId:string}
 
@@ -17,13 +30,32 @@ export class EditPointerComponent implements AfterContentInit {
    */
   objectData:any
 
+  /**
+   * @type string
+   * @desc 指针指向后端数据的Schema表名
+   * @example
+   * <nova-edit-pointer [className]="'GameComment'">
+   */
   @Input("className")
   className!:string
+
+  /**
+   * @type string
+   * @desc 该指针查询时对应的Schema表列字段，搭配className使用
+   * @example
+   * <!-- 编辑用户_User的指针数据，且根据nickname昵称搜索 -->
+   * <nova-edit-pointer [className]="'_User" [searchCol]="'nickname'">
+   */
   @Input("searchCol")
   searchCol!:string
+  /**
+   * @type string
+   * @desc 根据指针搜索表时，匹配的字符串
+   */
   searchText!:string
 
   list:any[] = []
+
   constructor(){
     setTimeout(() => {
       this.getDataById();
@@ -78,7 +110,13 @@ export class EditPointerComponent implements AfterContentInit {
         "mode": "cors",
         "credentials": "omit"
       });
+
+      /**
+       * @desc data 格式：{results:[]} 查询结果列表
+       * @see https://docs.parseplatform.org/rest/guide/#queries
+       */
       let data = await result.json();
+      
       this.list = data.results;
   
       return

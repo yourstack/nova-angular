@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-commentlist',
@@ -12,7 +13,7 @@ export class CommentlistComponent {
   searchText:string = ""
   showDelete:boolean = false;
   deleteCount:number = 0;
-  constructor(private router:Router){
+  constructor(private router:Router,private gameServ:GameService){
     this.refresh();
   }
 
@@ -24,9 +25,9 @@ export class CommentlistComponent {
     let searchParams = `,"name":{"$regex":"${this.searchText}"}`
     this.getGameCommentList(searchParams)
   }
-  refresh(){
+  async refresh(){
     this.getGameCommentList();
-    this.getDeleteCount();
+    this.deleteCount = await this.gameServ.getDeleteCount("GameComment");
   }
   addNewGameComment(){
     this.router.navigate(["/game/comment/edit"],{
@@ -40,21 +41,7 @@ export class CommentlistComponent {
     this.showDelete=!this.showDelete
     this.refresh()
   }
-  async getDeleteCount(){
-    let url = `http://metapunk.cn:9999/parse/classes/GameComment?where={"isDeleted":true}&count=1&limit=0`
 
-    let result = await fetch(url, {
-      "headers": {
-        "x-parse-application-id": "dev"
-      },
-      "body": null,
-      "method": "GET",
-      "mode": "cors",
-      "credentials": "omit"
-    });
-    let data = await result.json();
-    this.deleteCount = data.count || 0
-  }
   async getGameCommentList(searchParams=""){
     let url = "http://metapunk.cn:9999/parse/classes/GameComment?"
 
@@ -97,43 +84,22 @@ export class CommentlistComponent {
     ]
   }
 
-  async deleteGameComment(game:any,isRestore:boolean=false){
-    let isDeleted = true
-    if(isRestore==true){
-      isDeleted = false
-    }
-    // 发送HTTP请求，将isDeleted字段更新为true;
-    let objectId = game.objectId
-    if(objectId){
-      let response = await fetch(`http://metapunk.cn:9999/parse/classes/GameComment/${objectId}`, {
-        "headers": {
-          "content-type": "text/plain;charset=UTF-8",
-          "x-parse-application-id": "dev"
-        },
-        "body": `{"isDeleted":${isDeleted}}`,
-        "method": "PUT",
-        "mode": "cors",
-        "credentials": "omit"
-      });
-      let data = await response.json();
-      // 成功删除时，HTTP网络请求返回：{"updatedAt":"2023-01-04T08:29:35.195Z"}
-      if(data?.updatedAt){
+  deleteGameComment(game:any,isRestore:boolean=false){
+    this.gameServ.deleteObject("GameComment",game,isRestore).then(isSuccess=>{
+      if(isSuccess){
         // 内存变量删除该项
         let idx = this.GameCommentList.findIndex(item=>item.name==game.name)
         this.GameCommentList.splice(idx,1)
-        if(isDeleted){
+        if(!isRestore){
           this.deleteCount ++;
         }else{
           this.deleteCount --;
         }
       }
-      
-    }
-    return
+    })
   }
+
   editGameComment(game:any){
     console.log(game)
-
-
   }
 }

@@ -1,0 +1,27 @@
+
+
+<h1 [innerHTML]="'标签内的内容'"></h1>
+<h1>{{title.length}}</h1>
+<h1>{{getStringLength(title)}}</h1>
+
+
+<button (click)="toggleShow('red')">切换红色</button>
+<button (click)="blueShow=!blueShow">切换蓝色</button>
+
+<button (click)="limitCount('less',1000)">粉丝数小于1000</button>
+<button (click)="limitCount('greater',1000)">粉丝数大于1000</button>
+<button (click)="showAll()">展示全部</button>
+
+<ng-container *ngIf="redShow">
+    <div *ngFor="let student of displayStudentList" style="color:white;margin:10px;width:500px;height:100%;background:red;">
+        <h1>{{toJson(student)}}</h1>
+        <h1>姓名：{{student.name | uppercase}} {{student["name"] | lowercase}}</h1>
+        <h1>年龄：{{student.age}}</h1>
+        <h1>粉丝：{{student.fansCount}}</h1>
+        <h1>登录：{{student.loginDate | date:"yyyy-MM-dd HH:mm:ss"}}</h1>
+    </div>
+</ng-container>
+
+<div *ngIf="blueShow" style="color:white;margin:10px;width:100px;height:100px;background:blue;">
+
+</div>

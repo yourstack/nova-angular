@@ -20,6 +20,7 @@ import { CommenteditComponent } from './commentedit/commentedit.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
 import { CommentitemComponent } from './commentitem/commentitem.component';
 import { EditPointerComponent } from './edit-pointer/edit-pointer.component';
+import { TestpageComponent } from './testpage/testpage.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditPointerComponent } from './edit-pointer/edit-pointer.component';
     CommenteditComponent,
     CommentlistComponent,
     CommentitemComponent,
-    EditPointerComponent
+    EditPointerComponent,
+    TestpageComponent
   ],
   imports: [
     CommonModule,FormsModule,
