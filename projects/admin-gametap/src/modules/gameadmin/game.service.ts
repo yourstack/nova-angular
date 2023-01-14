@@ -1,11 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
+
+/**
+ * 游戏管理模块常用的数据相关服务
+ * @example
+ * import { GameService } from '../game.service';
+ * class XXXComponent{
+ *    contructor(private gameServ:GameService){}
+ *    async refresh(){
+ *        // 获取被软删除的GameComment数量
+ *        this.deleteCount = await this.gameServ.getDeleteCount("GameComment");
+ *        // 删除用户选择的GameCommnet对象
+ *        this.gameServ.deleteObject("GameComment",game,isRestore).then(isSuccess=>{})
+ *    }
+ * }
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
   constructor(private router:Router) { }
+
+  /**
+   * 跳转到新增游戏对象页面
+   */
   addNewGame(){
     this.router.navigate(["/game/edit"],{
       queryParams:{

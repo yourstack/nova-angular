@@ -29,7 +29,8 @@
     - [单元测试：检测最小可测试单元](docs/testing/unit-test.md)
     - [对端测试：模拟真实用户场景](docs/testing/e2e-test.md)
 - 文档规范：Document
-    - [UML:技术文档编写规范](docs/uml/document.md)
+    - [UML:项目文档编写规范](docs/uml/document.md)
+    - [DOC:技术文档及注释规范](docs/document.md)
 - 后端服务：Backend
     - [Parse:微服务测试环境](docs/backend/parse.md)
         - [FAQ:后台数据添加图片地址前端不显示](docs/faq/faq.imgbed.md)
@@ -51,7 +52,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## 注释规范 Comment
-- https://tsdoc.org/
+- 推荐 https://compodoc.app/
+- 辅助 https://tsdoc.org/
+
+``` sh
+npm run docs
+```
 
 ## 单元测试 Running unit tests
 

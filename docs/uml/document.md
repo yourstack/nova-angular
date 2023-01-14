@@ -1,4 +1,4 @@
-# UML技术文档编写规范
+# UML项目文档编写规范
 
 # 依赖插件
 - VSCode插件：PlantUML
