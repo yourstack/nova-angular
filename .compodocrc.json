@@ -1,0 +1,6 @@
+{
+    "name":"NovaAngular技术文档",
+    "output":"dist/docs-admin-gametap",
+    "language":"zh-CN",
+    "coverageTestThresholdFail":"false"
+}
